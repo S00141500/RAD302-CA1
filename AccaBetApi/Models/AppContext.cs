@@ -19,6 +19,7 @@ namespace AccaBetApi.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.Configuration.LazyLoadingEnabled = false;
         }
 
     }

@@ -29,38 +29,37 @@ namespace AccaBetApi.Migrations
             context.SaveChanges();
 
             List<League> leagues = new List<League>() {
-                new League { ID = 1204, LeagueName = "Premier League", LeagueIcon = "~/Content/images/premier_league.png", CountryID = countries.FirstOrDefault(c=> c.CountryName == "England").ID  },
-                new League { ID = 1205, LeagueName = "Championship", LeagueIcon = "~/Content/images/eng_champ.png", CountryID = countries.FirstOrDefault(c=> c.CountryName == "England").ID  },
-                new League { ID = 1399, LeagueName = "La Liga", LeagueIcon = "~/Content/images/la_liga.png", CountryID = countries.FirstOrDefault(c=> c.CountryName == "Spain").ID  },
-                new League { ID = 1229, LeagueName = "Bundesliga", LeagueIcon = "~/Content/images/bundesliga.gif", CountryID = countries.FirstOrDefault(c=> c.CountryName == "Germany").ID  },
-                new League { ID = 1269, LeagueName = "Serie A", LeagueIcon = "~/Content/images/serie_a.png", CountryID = countries.FirstOrDefault(c=> c.CountryName == "Italy").ID  },
-                new League { ID = 1221, LeagueName = "Ligue 1", LeagueIcon = "~/Content/images/ligue1.jpg", CountryID = countries.FirstOrDefault(c=> c.CountryName == "France").ID  },
+                new League { ID = 398, LeagueName = "Premier League", LeagueIcon = "~/Content/images/premier_league.png", CountryID = countries.FirstOrDefault(c=> c.CountryName == "England").ID  },
+                new League { ID = 399, LeagueName = "La Liga", LeagueIcon = "~/Content/images/la_liga.png", CountryID = countries.FirstOrDefault(c=> c.CountryName == "Spain").ID  },
+                new League { ID = 394, LeagueName = "Bundesliga", LeagueIcon = "~/Content/images/bundesliga.gif", CountryID = countries.FirstOrDefault(c=> c.CountryName == "Germany").ID  },
+                new League { ID = 401, LeagueName = "Serie A", LeagueIcon = "~/Content/images/serie_a.png", CountryID = countries.FirstOrDefault(c=> c.CountryName == "Italy").ID  },
+                new League { ID = 396, LeagueName = "Ligue 1", LeagueIcon = "~/Content/images/ligue1.jpg", CountryID = countries.FirstOrDefault(c=> c.CountryName == "France").ID  },
             };
 
             leagues.ForEach(l => context.Leagues.Add(l));
             context.SaveChanges();
 
             List<Team> teams = new List<Team>() {
-                new Team { ID = 9240, TeamName = "Leicester", LeagueID = 1204 },
-                new Team { ID = 9406, TeamName = "Tottenham", LeagueID = 1204 },
-                new Team { ID = 9002, TeamName = "Arsenal", LeagueID = 1204 },
-                new Team { ID = 9259, TeamName = "Manchester City", LeagueID = 1204 },
-                new Team { ID = 9427, TeamName = "WestHam", LeagueID = 1204 },
-                new Team { ID = 9260, TeamName = "Manchester United", LeagueID = 1204 },
-                new Team { ID = 9363, TeamName = "Southampton", LeagueID = 1204 },
-                new Team { ID = 9378, TeamName = "Stoke City", LeagueID = 1204 },
-                new Team { ID = 9249, TeamName = "Liverpool", LeagueID = 1204 },
-                new Team { ID = 9092, TeamName = "Chelsea", LeagueID = 1204 },
-                new Team { ID = 9426, TeamName = "WestBrom", LeagueID = 1204 },
-                new Team { ID = 9158, TeamName = "Everton", LeagueID = 1204 },
-                new Team { ID = 9053, TeamName = "Bournemouth", LeagueID = 1204 },
-                new Team { ID = 9423, TeamName = "Watford", LeagueID = 1204 },
-                new Team { ID = 9387, TeamName = "Swansea", LeagueID = 1204 },
-                new Team { ID = 9127, TeamName = "CrystalPalace", LeagueID = 1204 },
-                new Team { ID = 9296, TeamName = "Norwich", LeagueID = 1204 },
-                new Team { ID = 9384, TeamName = "Sunderland", LeagueID = 1204 },
-                new Team { ID = 9287, TeamName = "NewcastleUtd", LeagueID = 1204 },
-                new Team { ID = 9008, TeamName = "AstonVilla", LeagueID = 1204 }
+                new Team { ID = 338, TeamName = "Leicester", LeagueID = 398 },
+                new Team { ID = 73, TeamName = "Tottenham", LeagueID = 398 },
+                new Team { ID = 57, TeamName = "Arsenal", LeagueID = 398 },
+                new Team { ID = 65, TeamName = "Manchester City", LeagueID = 398 },
+                new Team { ID = 563, TeamName = "WestHam", LeagueID = 398 },
+                new Team { ID = 66, TeamName = "Manchester United", LeagueID = 398 },
+                new Team { ID = 340, TeamName = "Southampton", LeagueID = 398 },
+                new Team { ID = 70, TeamName = "Stoke City", LeagueID = 398 },
+                new Team { ID = 64, TeamName = "Liverpool", LeagueID = 398 },
+                new Team { ID = 61, TeamName = "Chelsea", LeagueID = 398 },
+                new Team { ID = 74, TeamName = "WestBrom", LeagueID = 398 },
+                new Team { ID = 62, TeamName = "Everton", LeagueID = 398 },
+                new Team { ID = 1044, TeamName = "Bournemouth", LeagueID = 398 },
+                new Team { ID = 346, TeamName = "Watford", LeagueID = 398 },
+                new Team { ID = 72, TeamName = "Swansea", LeagueID = 398 },
+                new Team { ID = 354, TeamName = "CrystalPalace", LeagueID = 398 },
+                new Team { ID = 68, TeamName = "Norwich", LeagueID = 398 },
+                new Team { ID = 71, TeamName = "Sunderland", LeagueID = 398 },
+                new Team { ID = 67, TeamName = "NewcastleUtd", LeagueID = 398 },
+                new Team { ID = 58, TeamName = "AstonVilla", LeagueID = 398 }
             };
 
             teams.ForEach(t => context.Teams.Add(t));

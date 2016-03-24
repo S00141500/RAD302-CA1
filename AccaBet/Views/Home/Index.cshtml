@@ -32,12 +32,15 @@
 <script>
     $(document).ready(function () {
 
-        var apiKey = "99b54cf5-1724-8658-3422410601b1"
+        var apiKey = "ba5634ed8cc74a94abaa10b8b43e2fab"
 
-        var myurl = "http://football-api.com/api/?Action=competitions&APIKey=" + apiKey;
+        //398
+
+        var myurl = "http://api.football-data.org/v1/soccerseasons/398/fixtures"// + apiKey;
 
         $.ajax(
                   {
+                      headers: { 'X-Auth-Token': apiKey },
                       type: 'GET',
                       dataType: 'json',
                       url: myurl,
