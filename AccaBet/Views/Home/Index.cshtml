@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="ui selectable inverted table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th class="right aligned">Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>John</td>
+            <td>Approved</td>
+            <td class="right aligned">None</td>
+        </tr>
+        <tr>
+            <td>Jamie</td>
+            <td>Approved</td>
+            <td class="right aligned">Requires call</td>
+        </tr>
+        <tr>
+            <td>Jill</td>
+            <td>Denied</td>
+            <td class="right aligned">None</td>
+        </tr>
+    </tbody>
+</table>
+<script src="~/scripts/jquery-1.8.1.js"></script>
+<script>
+    $(document).ready(function () {
+
+        var apiKey = "99b54cf5-1724-8658-3422410601b1"
+
+        var myurl = "http://football-api.com/api/?Action=competitions&APIKey=" + apiKey;
+
+        $.ajax(
+                  {
+                      type: 'GET',
+                      dataType: 'json',
+                      url: myurl,
+                      IP:"109.77.135.27",
+                      success: function (data, status) {
+
+                        alert(data)
+                      },
+                      error: function (jqXHR, errorThrown) { alert(jqXHR.status) },
+                  })
+
+    });
+</script>
