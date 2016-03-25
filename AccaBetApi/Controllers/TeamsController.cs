@@ -54,87 +54,7 @@ namespace AccaBetApi.Controllers
 
             return Ok(team);
         }
-        //// PUT: api/Teams/5
-        //[ResponseType(typeof(void))]
-        //public IHttpActionResult PutTeam(int id, Team team)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    if (id != team.ID)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    db.Entry(team).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        db.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!TeamExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return StatusCode(HttpStatusCode.NoContent);
-        //}
-
-        //// POST: api/Teams
-        //[ResponseType(typeof(Team))]
-        //public IHttpActionResult PostTeam(Team team)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Teams.Add(team);
-
-        //    try
-        //    {
-        //        db.SaveChanges();
-        //    }
-        //    catch (DbUpdateException)
-        //    {
-        //        if (TeamExists(team.ID))
-        //        {
-        //            return Conflict();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return CreatedAtRoute("DefaultApi", new { id = team.ID }, team);
-        //}
-
-        //// DELETE: api/Teams/5
-        //[ResponseType(typeof(Team))]
-        //public IHttpActionResult DeleteTeam(int id)
-        //{
-        //    Team team = db.Teams.Find(id);
-        //    if (team == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    db.Teams.Remove(team);
-        //    db.SaveChanges();
-
-        //    return Ok(team);
-        //}
-
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -143,10 +63,6 @@ namespace AccaBetApi.Controllers
             }
             base.Dispose(disposing);
         }
-
-        //private bool TeamExists(int id)
-        //{
-        //    return db.Teams.Count(e => e.ID == id) > 0;
-        //}
+        
     }
 }

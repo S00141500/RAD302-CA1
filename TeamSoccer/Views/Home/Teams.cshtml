@@ -9,7 +9,7 @@
         <div class="col-md-4">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Countries</h3>
+                    <h3 class="panel-title">Countries & Leagues</h3>
                 </div>
                 <div class="panel-body">
                     <div class="col-md-5">
@@ -20,9 +20,9 @@
                         </div>
                     </div>
                     <div class="col-md-7">
-                        <div class="list-group" data-bind="foreach:leagues">
+                        <div class="list-group text-center" data-bind="foreach:leagues">
                             <a href="#" class="list-group-item" data-bind="click:getTeams">
-                                <div><img data-bind="attr:{src:LeagueIcon, alt:LeagueName}" width="50" height="50" /><p data-bind="text:LeagueName"></p></div>
+                                <div><img data-bind="attr:{src:LeagueIcon, alt:LeagueName}" width="80" height="80" /><p data-bind="text:LeagueName"></p></div>
                             </a>
                         </div>
                     </div>
@@ -31,10 +31,11 @@
         </div>
         <div class="col-md-8">
             <div id="teams_palyers" class="panel panel-danger">
+                <div id="no-teams" class="alert alert-warning">No Teams in Database for this leage</div>
+
                 <div class="panel-body">
                     <div class="col-md-5">
                         <h4 class="text-info">List Of Teams</h4>
-                        <div id="no-teams" class="alert alert-warning">No Teams in Database for this leage</div>
                         <table id="teams-table" class="table table-striped table-hover table-responsive table-condensed ">
                             <tbody data-bind="foreach:teams">
                                 <tr>
@@ -43,6 +44,7 @@
                                 </tr>
                             </tbody>
                         </table>
+                        
                     </div>
                     <div id="teamDetails" class="col-md-7">
                         <h4 class="text-info">Team Details</h4>
@@ -66,14 +68,14 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
-                    </div>
-            </div>
 
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
-
 @section scripts {
 
     @Scripts.Render("~/bundles/KO")
@@ -96,7 +98,7 @@
             self.leagues = ko.observableArray();
             self.teams = ko.observableArray();
             self.players = ko.observableArray();
-
+            self.leagueID = ko.observable();
             self.teamDetails = {
                 name: ko.observable(),
                 shortName: ko.observable(),
@@ -104,23 +106,32 @@
                 crestUrl: ko.observable()
             }
 
+
             self.getLeagues = function (c) {
                 getLeaguesFromServer(c.ID);
             }
 
             self.getTeams = function (l) {
+                self.leagueID(l.ID);
                 getTeams(l.ID);
             }
 
             self.getTeamDetails = function (team) {
                 ajaxHelper(externalUri + '/teams/' + team.ID, 'GET', apiToken).done(function (data) {
                     $('#teamDetails').show();
+                    self.teamDetails.name(data.name);
+                    self.teamDetails.shortName(data.shortName);
+                    self.teamDetails.squadMarketValue(data.squadMarketValue.slice(0, -2));
+                    self.teamDetails.crestUrl(data.crestUrl);
+                });
+            }
 
-                        self.teamDetails.name(data.name);
-                        self.teamDetails.shortName(data.shortName);
-                        self.teamDetails.squadMarketValue(data.squadMarketValue.slice(0, -2));
-                        self.teamDetails.crestUrl(data.crestUrl);
-                    });
+            self.addTeams = function () {
+                $('#add-teams').show();
+                ajaxHelper(externalUri + '/' + self.leagueID() + '/teams', 'GET', apiToken).done(function (data) {
+                    self.teamsFromExServer(data);
+                });
+
             }
 
             function getCountries() {
@@ -136,7 +147,7 @@
                     self.leagues.removeAll();
                     data[0].LeagueIcon = '../' + data[0].LeagueIcon
                     self.leagues(data);
-                    $('#teams_palyers, #teamDetails,#no-teams').hide();
+                    $('#teams_palyers, #teamDetails,#no-teams,#btn-add-teams,add-teams').hide();
                 });
             }
 
@@ -144,9 +155,8 @@
                 ajaxHelper(teamsUri + '/' + league_id + '/teamLeague', 'GET', '').done(function (data) {
                     $('#teams_palyers').show();
                     self.teams.removeAll();
-                    if (data.length < 1)
-                    {
-                        $('#no-teams').show();
+                    if (data.length < 1) {
+                        $('#no-teams,#btn-add-teams').show();
                     }
                     self.teams(data);
                 });
@@ -169,7 +179,7 @@
         }
 
         $(document).ready(function () {
-            $('#teams_palyers, #teamDetails,#no-teams').hide();
+            $('#teams_palyers, #teamDetails,#no-teams,#btn-add-teams,#add-teams').hide();
 
             ko.applyBindings(new TeamsViewModel);
         });
