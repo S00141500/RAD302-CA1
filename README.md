@@ -12,5 +12,6 @@
 - Index page: Displays fixtures, Results, Table for a selected League
 - Team page: Displays a list of teams from database for a selected -> country --> league. Also displays details of team from External      Api.
 - CSS FrameWork: Bootstrap
+- font-awesome  
 
 ## External API http://www.football-data.org/documentation
