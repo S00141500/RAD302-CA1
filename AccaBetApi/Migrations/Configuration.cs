@@ -29,11 +29,11 @@ namespace AccaBetApi.Migrations
             context.SaveChanges();
 
             List<League> leagues = new List<League>() {
-                new League { ID = 398, LeagueName = "Premier League", LeagueIcon = "~/Content/images/premier_league.png", CountryID = countries.FirstOrDefault(c=> c.CountryName == "England").ID  },
-                new League { ID = 399, LeagueName = "La Liga", LeagueIcon = "~/Content/images/la_liga.png", CountryID = countries.FirstOrDefault(c=> c.CountryName == "Spain").ID  },
-                new League { ID = 394, LeagueName = "Bundesliga", LeagueIcon = "~/Content/images/bundesliga.gif", CountryID = countries.FirstOrDefault(c=> c.CountryName == "Germany").ID  },
-                new League { ID = 401, LeagueName = "Serie A", LeagueIcon = "~/Content/images/serie_a.png", CountryID = countries.FirstOrDefault(c=> c.CountryName == "Italy").ID  },
-                new League { ID = 396, LeagueName = "Ligue 1", LeagueIcon = "~/Content/images/ligue1.jpg", CountryID = countries.FirstOrDefault(c=> c.CountryName == "France").ID  },
+                new League { ID = 398, LeagueName = "Premier League", LeagueIcon = "Content/images/premier_league.png", CountryID = countries.FirstOrDefault(c=> c.CountryName == "England").ID  },
+                new League { ID = 399, LeagueName = "La Liga", LeagueIcon = "Content/images/la_liga.png", CountryID = countries.FirstOrDefault(c=> c.CountryName == "Spain").ID  },
+                new League { ID = 394, LeagueName = "Bundesliga", LeagueIcon = "Content/images/bundesliga.gif", CountryID = countries.FirstOrDefault(c=> c.CountryName == "Germany").ID  },
+                new League { ID = 401, LeagueName = "Serie A", LeagueIcon = "Content/images/serie_a.png", CountryID = countries.FirstOrDefault(c=> c.CountryName == "Italy").ID  },
+                new League { ID = 396, LeagueName = "Ligue 1", LeagueIcon = "Content/images/ligue1.jpg", CountryID = countries.FirstOrDefault(c=> c.CountryName == "France").ID  },
             };
 
             leagues.ForEach(l => context.Leagues.Add(l));

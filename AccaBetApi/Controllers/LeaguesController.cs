@@ -9,12 +9,15 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using AccaBetApi.Models;
+using System.Web.Http.Cors;
 
 namespace AccaBetApi.Controllers
 {
+    [EnableCors(origins: "http://localhost:16901", headers: "*", methods: "*")]
     public class LeaguesController : ApiController
     {
         private AppContext db = new AppContext();
+
 
         // GET: api/Leagues
         public IQueryable<League> GetLeagues()
