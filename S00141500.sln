@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoccerApi", "AccaBetApi\SoccerApi.csproj", "{DDF8DDB2-3F2A-44D9-B3AE-7A865BE03C58}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soccer", "TeamSoccer\Soccer.csproj", "{F8231652-104E-4B50-873E-D215E79F470C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DDF8DDB2-3F2A-44D9-B3AE-7A865BE03C58} = {DDF8DDB2-3F2A-44D9-B3AE-7A865BE03C58}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
