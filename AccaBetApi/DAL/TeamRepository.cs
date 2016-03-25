@@ -32,5 +32,13 @@ namespace AccaBetApi.DAL
            Team team = context.Teams.Find(id);
             return team;
         }
+
+        public List<Team> GetLeagueByCountry(int? id)
+        {
+            var teams = from t in context.Teams where t.LeagueID == id select t;
+
+
+            return teams.ToList();
+        }
     }
 }

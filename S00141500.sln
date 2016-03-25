@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccaBetApi", "AccaBetApi\AccaBetApi.csproj", "{DDF8DDB2-3F2A-44D9-B3AE-7A865BE03C58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoccerApi", "AccaBetApi\SoccerApi.csproj", "{DDF8DDB2-3F2A-44D9-B3AE-7A865BE03C58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamSoccer", "TeamSoccer\TeamSoccer.csproj", "{F8231652-104E-4B50-873E-D215E79F470C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soccer", "TeamSoccer\Soccer.csproj", "{F8231652-104E-4B50-873E-D215E79F470C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -19,7 +19,7 @@ namespace AccaBetApi.DAL
         }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            context.Dispose();
         }
 
         public IQueryable<Country> GetAllCountries()
@@ -29,7 +29,8 @@ namespace AccaBetApi.DAL
 
         public Country GetCountryByID(int? id)
         {
-            throw new NotImplementedException();
+            Country country = context.Countries.Find(id);
+            return country;
         }
     }
 }

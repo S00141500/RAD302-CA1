@@ -27,13 +27,21 @@ namespace AccaBetApi.DAL
 
         public IQueryable<League> GetAllLeagues()
         {
-            return context.Leagues;
+            return context.Leagues.AsQueryable();
         }
 
         public League GetLeagueByID(int? id)
         {
             League league = context.Leagues.Find(id);
             return league;
+        }
+
+        public List<League> GetLeagueByCountry(int? id)
+        {
+            var leagues = from l in context.Leagues where l.CountryID == id select l;
+
+
+            return leagues.ToList();
         }
     }
 }

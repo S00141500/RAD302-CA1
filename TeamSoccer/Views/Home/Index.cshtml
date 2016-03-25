@@ -7,7 +7,9 @@
         <div id="leagueIcons" class="col-md-1">
             <ul data-bind="foreach:leagues">
                 <li>
-                    <a href="#" class="btn btn-info" data-bind="click : $root.showLeagueData"><img data-bind="attr:{src:LeagueIcon, alt:LeagueName}" width="50" height="50" /></a>
+                    <a href="#" class="btn btn-info" data-bind="click : $root.showLeagueData">
+                        <img data-bind="attr:{src:LeagueIcon, alt:LeagueName}" width="50" height="50" />
+                    </a>
                 </li>
             </ul>
         </div>
@@ -37,9 +39,9 @@
                         <tbody data-bind="foreach:fixtures">
                             <tr>
                                 <td data-bind="text:homeTeamName"></td>
-                                <td id="fixture-verus"><i  class="fa fa-angle-down fa-2x"></i></td>
+                                <td id="fixture-verus"><i class="fa fa-angle-down fa-2x"></i></td>
                                 <td data-bind="text:awayTeamName"></td>
-                                <td ><i class="fa fa-calendar-o"></i><span data-bind="text:date"></span></td>
+                                <td><i class="fa fa-calendar-o"></i><span data-bind="text:date"></span></td>
                                 <td><i class="glyphicon glyphicon-time"></i><span data-bind="text:time"></span></td>
                             </tr>
                         </tbody>
@@ -55,21 +57,19 @@
                                 <th></th>
                                 <th>Away Team</th>
                                 <th>Date</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody data-bind="foreach:results">
                             <tr>
                                 <td data-bind="text:homeTeamName"></td>
                                 <td id="result-goals">
-                                <span data-bind="text:result.goalsHomeTeam"></span>
-                                <spn><i class="fa fa-minus"></i></spn>
-                                <span data-bind="text:result.goalsAwayTeam"></span>
+                                    <span data-bind="text:result.goalsHomeTeam"></span>
+                                    <spn><i class="fa fa-minus"></i></spn>
+                                    <span data-bind="text:result.goalsAwayTeam"></span>
                                 </td>
-                                
+
                                 <td data-bind="text:awayTeamName"></td>
                                 <td><i class="fa fa-calendar-o"></i><span data-bind="text:date"></span></td>
-                                <td><button class="btn btn-sm btn-success" data-bind="click:$root.headToHead">Head to Head</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -86,7 +86,7 @@
                                 <th>Won</th>
                                 <th>Draw</th>
                                 <th>Loss</th>
-                                <th>Goals</th>  
+                                <th>Goals</th>
                                 <th>Against</th>
                                 <th>Goal Diff</th>
                                 <th>Points</th>
@@ -95,7 +95,7 @@
                         <tbody data-bind="foreach:leagueStandings">
                             <tr>
                                 <td data-bind="text:position"></td>
-                                <td class="text-left"><img id="standing-crest-img" data-bind="attr:{src:crestURI}" width="20" height="20"/><span data-bind="text:teamName"></span></td>
+                                <td class="text-left"><img id="standing-crest-img" data-bind="attr:{src:crestURI}" width="20" height="20" /><span data-bind="text:teamName"></span></td>
                                 <td data-bind="text:playedGames"></td>
                                 <td data-bind="text:wins"></td>
                                 <td data-bind="text:draws"></td>
@@ -109,7 +109,7 @@
                         </tbody>
                     </table>
                 </div>
-                
+
             </div>
         </div>
 
@@ -124,7 +124,7 @@
             </div>
             <div class="modal-body">
                 <p>Last 5 maches they faced each-other.</p>
-                
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -146,6 +146,14 @@
 
             var self = this;
 
+            // my api
+            var leagueUri = 'http://localhost:11035/api/leagues';
+
+            // external api
+            var apiToken = 'ba5634ed8cc74a94abaa10b8b43e2fab';
+            var externalUri = 'http://api.football-data.org/v1';
+
+
             // KO observables to hold retrived data and are bound to sections of HTML on page
             self.leagues = ko.observableArray();
             self.leagueStandings = ko.observableArray();
@@ -154,12 +162,6 @@
             self.headToHeadList = ko.observableArray();
             self.leagueName = ko.observable();
 
-            // my api
-            var leagueUri = 'http://localhost:11035//api/leagues';
-
-            // external api
-            var apiToken = 'ba5634ed8cc74a94abaa10b8b43e2fab';
-            var externalUri = 'http://api.football-data.org/v1';
 
             // list of leagues from my api
             function getLeaguesData() {
@@ -179,7 +181,7 @@
             getLeaguesData();
 
 
-            // fired when league icon clicked 
+            // fired when league icon clicked
             self.showLeagueData = function (l) {
                 self.leagueName(l.LeagueName);
                 getLeagueFixtures(l.ID);
@@ -187,23 +189,23 @@
                 getLeagueStandings(l.ID);
 
             }
-            
+
             // Ajax method
             function ajaxHelper(uri, method, token, data) {
                 return $.ajax({
                     headers: { 'X-Auth-Token': token },
                     url: uri,
                     dataType: 'json',
-                   data: data ? JSON.stringify(data) : null
+                    data: data ? JSON.stringify(data) : null
                 }).fail(function (jqXHR, textStatus, errorThrown) {
-                    //toastr.error('Failed to get Data from Server!')
+                    toastr.error('Failed to get Data from Server!');
                 });
             }
 
             // gets a list of matches perviously played between two teams
-            self.headToHead = function (f) {
-                alert(f);
-                ajaxHelper(externalUri + '/fixtures/'+id+'?head2head=d5', 'GET', apiToken).done(function (data) {
+            self.headToHead = function (r) {
+                alert(r.id);
+                ajaxHelper(externalUri + '/fixtures/' + id + '?head2head=d5', 'GET', apiToken).done(function (data) {
                     self.headToHeadList.removeAll();
                     self.headToHeadList(data);
                 });
@@ -221,15 +223,15 @@
                         data.fixtures[i].date = data.fixtures[i].date.substring(0, 10);
                     });
 
-                     self.fixtures(data.fixtures);
-                   
+                    self.fixtures(data.fixtures);
+
                 });
 
             }
 
             // gets results for league id
             function getResults(id) {
-                ajaxHelper(externalUri + '/soccerseasons/' + id + '/fixtures?matchday=28', 'GET', apiToken).done(function (data) {
+                ajaxHelper(externalUri + '/soccerseasons/' + id + '/fixtures?timeFrame=p14', 'GET', apiToken).done(function (data) {
                     self.results.removeAll();
 
                     $(data.fixtures).each(function (i) {

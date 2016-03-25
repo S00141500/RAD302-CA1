@@ -19,9 +19,9 @@ namespace AccaBetApi.Controllers
     {
         private ITeamsRepository repo;
 
-        public TeamsController(ITeamsRepository repository)
+        public TeamsController()
         {
-            repo = repository;
+            repo = new TeamRepository(new AppContext());
         }
         // GET: api/Teams
         public IQueryable<Team> GetTeams()
@@ -42,6 +42,18 @@ namespace AccaBetApi.Controllers
             return Ok(team);
         }
 
+        [Route("api/Teams/{league_id}/teamLeague")]
+        [ResponseType(typeof(League))]
+        public IHttpActionResult GetLeagueByCountry(int league_id)
+        {
+            List<Team> team = repo.GetLeagueByCountry(league_id);
+            if (team == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(team);
+        }
         //// PUT: api/Teams/5
         //[ResponseType(typeof(void))]
         //public IHttpActionResult PutTeam(int id, Team team)

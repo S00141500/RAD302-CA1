@@ -92,9 +92,13 @@ h4 span {
 }
 
 
-#fixtures td,  #results td{
+#fixtures td{
     width:20%;
 }
+
+ #results td{
+     width:25%;
+ }
 
 #result-goals{
     text-align:center;

@@ -12,5 +12,7 @@ namespace AccaBetApi.DAL
         IQueryable<League> GetAllLeagues();
 
         League GetLeagueByID(int? id);
+
+        List<League> GetLeagueByCountry(int? country_id);
     }
 }

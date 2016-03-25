@@ -15,8 +15,6 @@ namespace TeamSoccer.Controllers
 
         public ActionResult Teams()
         {
-            ViewBag.Message = "Select a Team from Europes Top Leagues.";
-
             return View();
         }
         

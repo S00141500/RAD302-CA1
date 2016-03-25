@@ -19,9 +19,9 @@ namespace AccaBetApi.Controllers
     {
         private ILeaguesRepository repo;
 
-        public LeaguesController(ILeaguesRepository repository)
+        public LeaguesController()
         {
-            repo = repository;
+            repo = new LeagueRepository(new AppContext());
         }
         // GET: api/Leagues
         public IQueryable<League> GetLeagues()
@@ -42,99 +42,30 @@ namespace AccaBetApi.Controllers
             return Ok(league);
         }
 
-        // PUT: api/Leagues/5
-        //[ResponseType(typeof(void))]
-        //public IHttpActionResult PutLeague(int id, League league)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        // get league by country
+        [Route("api/Leagues/{country_id}/leagueCountry")]
+        [ResponseType(typeof(League))]
+        public IHttpActionResult GetLeagueByCountry(int country_id)
+        {
+            List<League> league = repo.GetLeagueByCountry(country_id);
+            if (league == null)
+            {
+                return NotFound();
+            }
 
-        //    if (id != league.ID)
-        //    {
-        //        return BadRequest();
-        //    }
+            return Ok(league);
+        }
 
-        //    db.Entry(league).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        db.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!LeagueExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return StatusCode(HttpStatusCode.NoContent);
-        //}
-
-        // POST: api/Leagues
-        //[ResponseType(typeof(League))]
-        //public IHttpActionResult PostLeague(League league)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Leagues.Add(league);
-
-        //    try
-        //    {
-        //        db.SaveChanges();
-        //    }
-        //    catch (DbUpdateException)
-        //    {
-        //        if (LeagueExists(league.ID))
-        //        {
-        //            return Conflict();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return CreatedAtRoute("DefaultApi", new { id = league.ID }, league);
-        //}
-
-        //// DELETE: api/Leagues/5
-        //[ResponseType(typeof(League))]
-        //public IHttpActionResult DeleteLeague(int id)
-        //{
-        //    League league = db.Leagues.Find(id);
-        //    if (league == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    db.Leagues.Remove(league);
-        //    db.SaveChanges();
-
-        //    return Ok(league);
-        //}
-
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                repo.Dispose();
+               repo.Dispose();
             }
-            base.Dispose(disposing);
+            //base.Dispose(disposing);
         }
 
-        //private bool LeagueExists(int id)
-        //{
-        //    return db.Leagues.Count(e => e.ID == id) > 0;
-        //}
+        
     }
 }
