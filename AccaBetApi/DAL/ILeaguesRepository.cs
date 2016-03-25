@@ -9,7 +9,7 @@ namespace AccaBetApi.DAL
 {
     public interface ILeaguesRepository:IDisposable
     {
-        List<League> GetAllLeagues();
+        IQueryable<League> GetAllLeagues();
 
         League GetLeagueByID(int? id);
     }

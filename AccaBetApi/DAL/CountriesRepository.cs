@@ -4,25 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AccaBetApi.Models;
+using System.Web.Http.Cors;
 
 namespace AccaBetApi.DAL
 {
+    [EnableCors(origins: "http://localhost:16901", headers: "*", methods: "*")]
     public class CountriesRepository : ICountriesRepository
     {
         private AppContext context;
 
         public CountriesRepository(AppContext context)
         {
-            context = this.context;
+            this.context = context;
         }
         public void Dispose()
         {
             throw new NotImplementedException();
         }
 
-        public List<Country> GetAllCountries()
+        public IQueryable<Country> GetAllCountries()
         {
-            throw new NotImplementedException();
+            return context.Countries;
         }
 
         public Country GetCountryByID(int? id)

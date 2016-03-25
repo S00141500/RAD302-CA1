@@ -9,7 +9,7 @@ namespace AccaBetApi.DAL
 {
     public interface ICountriesRepository :IDisposable
     {
-        List<Country> GetAllCountries();
+        IQueryable<Country> GetAllCountries();
 
         Country GetCountryByID(int? id);
     }

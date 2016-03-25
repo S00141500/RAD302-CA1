@@ -25,15 +25,86 @@ textarea {
 
 
 
-#leagueIcons ul li {
-    list-style-type: none;
-    padding: 5px;
+#league-data {
+    margin-top: 50px;
 }
 
-    #leagueIcons ul li img {
-        border:5px outset #0094ff
+#leagueIcons ul {
+    margin-top: 50px;
+}
+
+    #leagueIcons ul li {
+        list-style-type: none;
+        padding: 5px;
     }
 
-    #standing-crest-img{
-        margin-right:5px;
-    }
+        #leagueIcons ul li a {
+            padding: 5px;
+            border: 2px ridge #325d88;
+        }
+
+            #leagueIcons ul li a img {
+                border: 2px ridge #325d88;
+            }
+
+
+                #leagueIcons ul li a:hover, #leagueIcons ul li a img:hover {
+                    border: 2px solid #29abe0;
+                }
+
+
+
+#standing-crest-img {
+    margin-right: 5px;
+}
+
+#fixtures h4, #standings h4, #results h4 {
+    padding: 10px 0;
+}
+
+h4 span {
+    font-weight: bolder;
+    font-size: xx-large;
+    padding-right: 20px;
+}
+
+#myTabContent {
+    border-left: 1px solid #dfd7ca;
+    border-right: 1px solid #dfd7ca;
+    border-bottom: 1px solid #dfd7ca;
+    padding-left: 10px;
+    margin-top: -10px;
+}
+
+#league-data-container {
+    margin-left: 40px;
+}
+
+
+#fixture-verus{
+    text-align:center;
+    padding-right:5%;
+}
+
+#fixtures i, #results i{
+    padding-right:10px;
+    color:#29abe0
+}
+
+
+#fixtures td,  #results td{
+    width:20%;
+}
+
+#result-goals{
+    text-align:center;
+}
+
+#result-goals i{
+    padding-left:10px;
+    color:#325d88;
+}
+
+#result-goals span{
+    color:#ff6a00
+}

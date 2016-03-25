@@ -6,48 +6,34 @@ using System.Threading.Tasks;
 using AccaBetApi.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
+using System.Web.Http.Cors;
 
 namespace AccaBetApi.DAL
 {
+    [EnableCors(origins: "http://localhost:16901", headers: "*", methods: "*")]
+
     public class LeagueRepository : ILeaguesRepository
     {
         private AppContext context;
-
-          private string BaseApiAddress;
-        private string ApiSuffix;
-
-        public LeagueRepository(string baseAddress, string apiSuffix)
-        {
-            BaseApiAddress = baseAddress;
-            ApiSuffix = apiSuffix;
-        }
-
-        private HttpClient CreateHttpClient()
-        {
-            return new HttpClient()
-            {
-                BaseAddress = new Uri(BaseApiAddress),
-            };
-        }
         
-
         public LeagueRepository(AppContext context)
         {
-            context = this.context;
+            this.context = context;
         }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            context.Dispose();
         }
 
-        public List<League> GetAllLeagues()
+        public IQueryable<League> GetAllLeagues()
         {
-            throw new NotImplementedException();
+            return context.Leagues;
         }
 
         public League GetLeagueByID(int? id)
         {
-            throw new NotImplementedException();
+            League league = context.Leagues.Find(id);
+            return league;
         }
     }
 }

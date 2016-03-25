@@ -13,8 +13,7 @@ namespace TeamSoccer
 
             bundles.Add(new ScriptBundle("~/bundles/KO").Include(
                         "~/Scripts/toastr.js",
-                        "~/Scripts/knockout-{version}.js",
-                        "~/Scripts/jquery.dynatable.js"));
+                        "~/Scripts/knockout-{version}.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -31,7 +30,7 @@ namespace TeamSoccer
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/jquery.dynatable.css",
+                      "~/css\font-awesome.css",
                       "~/Content/site.css"));
         }
     }

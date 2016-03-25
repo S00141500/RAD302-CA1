@@ -9,7 +9,7 @@ namespace AccaBetApi.DAL
 {
     public interface ITeamsRepository :IDisposable
     {
-        List<Team> GetAllTeams();
+        IQueryable<Team> GetAllTeams();
 
         Team GetTeamByID(int? id);
     }

@@ -4,30 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AccaBetApi.Models;
+using System.Web.Http.Cors;
 
 namespace AccaBetApi.DAL
 {
+    [EnableCors(origins: "http://localhost:16901", headers: "*", methods: "*")]
     public class TeamRepository : ITeamsRepository
     {
         private AppContext context;
 
         public TeamRepository(AppContext context)
         {
-            context = this.context;
+            this.context = context;
         }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            context.Dispose();
         }
 
-        public List<Team> GetAllTeams()
+        public IQueryable<Team> GetAllTeams()
         {
-            throw new NotImplementedException();
+            return context.Teams;
         }
 
         public Team GetTeamByID(int? id)
         {
-            throw new NotImplementedException();
+           Team team = context.Teams.Find(id);
+            return team;
         }
     }
 }
