@@ -22,6 +22,8 @@ namespace AccaBetApi
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             GlobalConfiguration.Configuration.DependencyResolver = new NinjectResolver(NinjectWebCommon.Kernel);
+
+
         }
     }
 }

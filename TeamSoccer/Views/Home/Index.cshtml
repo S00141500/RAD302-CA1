@@ -171,7 +171,7 @@
 
                     // initalize table with data from ex api
                     getLeagueFixtures(data[0].ID);
-                    getResults(data[0].ID)
+                    getResults(data[0].ID);
                     getLeagueStandings(data[0].ID);
 
                 });
@@ -215,7 +215,7 @@
             // gets list of league fixtures for next 15 days i.e ?timeFrame = n14
             function getLeagueFixtures(id) {
 
-                ajaxHelper(externalUri + '/soccerseasons/' + id + '/fixtures?timeFrame=n14', 'GET', apiToken).done(function (data) {
+                ajaxHelper(externalUri + '/soccerseasons/' + id + '/fixtures?matchday=10', 'GET', apiToken).done(function (data) {
                     self.leagueStandings.removeAll();
 
                     $(data.fixtures).each(function (i) {
@@ -231,7 +231,7 @@
 
             // gets results for league id
             function getResults(id) {
-                ajaxHelper(externalUri + '/soccerseasons/' + id + '/fixtures?timeFrame=p14', 'GET', apiToken).done(function (data) {
+                ajaxHelper(externalUri + '/soccerseasons/' + id + '/fixtures?matchday=12', 'GET', apiToken).done(function (data) {
                     self.results.removeAll();
 
                     $(data.fixtures).each(function (i) {
