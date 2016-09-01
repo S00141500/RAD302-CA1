@@ -15,3 +15,18 @@
 - font-awesome  
 
 ## External API http://www.football-data.org/documentation
+
+![alt text](https://github.com/S00141500/RAD302-CA1/blob/master/league-standings.JPG "League Standings")
+
+
+
+
+
+![alt text](https://github.com/S00141500/RAD302-CA1/blob/master/fixtures.JPG "League fixtures")
+
+
+
+
+
+![alt text](https://github.com/S00141500/RAD302-CA1/blob/master/teams_players.JPG "Teams and their players")
+
