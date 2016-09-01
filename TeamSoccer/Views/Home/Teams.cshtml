@@ -148,6 +148,8 @@
             self.getTeamDetails = function (team) {
                 ajaxHelper(externalUri + '/teams/' + team.ID, 'GET', apiToken).done(function (data) {
                     $('#teamDetails').show();
+                    $('#player').hide();
+                    self.players.removeAll();
                     self.teamDetails.players(data._links.players.href);
                     self.teamDetails.name(data.name);
                     self.teamDetails.shortName(data.shortName);
@@ -158,7 +160,6 @@
 
             self.getTeamPlayers = function () {
                 ajaxHelper(self.teamDetails.players(), 'GET', apiToken).done(function (data) {
-                    self.players.removeAll();
                     self.players(data.players);
                     $('#players').show();
 
@@ -216,9 +217,7 @@
             }
 
             getCountries();
-
         }
-
 
         $(document).ready(function () {
             $('#teams_palyers, #teamDetails,#no-teams,#btn-add-teams,#add-teams').hide();
