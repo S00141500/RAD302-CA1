@@ -1,4 +1,4 @@
-# RAD302-CA1
+# Soccer App
 
 ## Description:
 - Code first approach with Migrations.
